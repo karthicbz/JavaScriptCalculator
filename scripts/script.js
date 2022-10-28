@@ -56,7 +56,12 @@ function operate(operant, a, b){
 
 buttons.forEach(button=>{
     button.addEventListener('click', (e)=>{
-        if(e.target.innerText !== '+' && e.target.innerText !== '-' && e.target.innerText !== '*' && e.target.innerText !== '/'){ //checks if the button doesn't equal to operator
+        if(e.target.innerText == 'clr'){
+            displayValue.value = '';
+            operator = undefined;
+            value = undefined;
+        }
+        else if(e.target.innerText !== '+' && e.target.innerText !== '-' && e.target.innerText !== '*' && e.target.innerText !== '/'){ //checks if the button doesn't equal to operator
             if(displayValue.value !== value){ //value is not equal to display concatenate display values with the button text
                 displayValue.value += e.target.innerText;
             }else{
