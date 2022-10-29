@@ -61,7 +61,8 @@ buttons.forEach(button=>{
             operator = undefined;
             value = undefined;
         }
-        else if(e.target.innerText !== '+' && e.target.innerText !== '-' && e.target.innerText !== '*' && e.target.innerText !== '/'){ //checks if the button doesn't equal to operator
+        else if(e.target.innerText !== '+' && e.target.innerText !== '-' && e.target.innerText !== '*' && e.target.innerText !== '/'
+        && e.target.innerText !== '='){ //checks if the button doesn't equal to operator
             if(displayValue.value !== value){ //value is not equal to display concatenate display values with the button text
                 displayValue.value += e.target.innerText;
             }else{
@@ -69,13 +70,20 @@ buttons.forEach(button=>{
                 displayValue.value = e.target.innerText;
             }
         }else{
-            if(operator == undefined || value == undefined){ //at first operator and value is undefined we check it if it undefined assign value into it
+            if(operator == undefined && value == undefined && e.target.innerText !== '='){ //at first operator and value is undefined and not equal to =, we check it, if it undefined assign value into it
                 operator = e.target.innerText;
                 value = displayValue.value.toString();
             }else{ //if the variables has values we calculate it with the functions
-                displayValue.value = operate(operator, Number(value), Number(displayValue.value));
-                value = displayValue.value; //assign the calculated value back to value
-                operator = e.target.innerText; //assign the currently choose operant to operator
+                if(value !== displayValue.value){ //this one prevents executing calculation again if user presses operator again and again
+                    displayValue.value = operate(operator, Number(value), Number(displayValue.value));
+                    value = displayValue.value; //assign the calculated value back to value
+                    if(e.target.innerText !== '='){ //this condition checks for =
+                        operator = e.target.innerText; //assign the currently choose operant to operator
+                    }else{
+                        operator = undefined;
+                        value = undefined;
+                    }
+                }
             }
             // displayValue.value = '';
             console.log(`value is ${value} and operator is ${operator}`);

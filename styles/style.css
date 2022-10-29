@@ -28,7 +28,7 @@ html, body{
     /* width: 350px;
     height: 500px; */
     /* border: 1px solid black; */
-    width: 20%;
+    width: 370px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -37,6 +37,7 @@ html, body{
 }
 
 .plus, .minus, .mul, .div, .equal{
+    /*ff9500*/
     background: #ff9500;
     font-size: 24px;
 }
@@ -48,6 +49,7 @@ html, body{
 }
 
 button{
+    /*505050*/
     width: 84px;
     height: 90px;
     border-radius: 50%;
@@ -64,4 +66,16 @@ button{
     background: #d4d4d2;
     padding-top: 0.5px;
     padding-bottom: 0.5px;
+}
+
+.numbers:hover{
+    background: #353535;
+}
+
+.operators:hover{
+    background: #ec8c04;
+}
+
+.clr:hover{
+    background: #c6c6c4;
 }
