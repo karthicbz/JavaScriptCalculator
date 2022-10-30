@@ -74,7 +74,7 @@ buttons.forEach(button=>{
                 operator = e.target.innerText;
                 value = displayValue.value.toString();
             }else{ //if the variables has values we calculate it with the functions
-                if(value !== displayValue.value){ //this one prevents executing calculation again if user presses operator again and again
+                if(value !== displayValue.value || e.target.innerText == '='){ //this one prevents executing calculation again if user presses operator again and again
                     displayValue.value = operate(operator, Number(value), Number(displayValue.value));
                     value = displayValue.value; //assign the calculated value back to value
                     if(e.target.innerText !== '='){ //this condition checks for =
